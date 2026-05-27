@@ -37,29 +37,29 @@ psql -U postgres < universe.sql
 
 psql --username=postgres --dbname=universe
 
-Database Schema at a Glance
+### **Database Schema at a Glance**
 
-Table	Primary Key	Foreign Keys	Description
+| Table	| Primary Key	| Foreign Keys | Description |
+| --- | --- | --- | --- |
+| galaxy | galaxy_id | None |	Stores galaxy names, ages, and descriptions.|
+| star |	star_id |	galaxy_id |	Maps stars to their respective galaxies.|
+| planet |	planet_id	| star_id, planet_type_id |	Details on orbital periods and life-habitability.|
+| moon | moon_id |	planet_id |	Information on lunar radii and orbital cycles.|
+| planet_type |	planet_type_id |	None | A lookup table for planetary classifications.|
 
-galaxy	galaxy_id	None	Stores galaxy names, ages, and descriptions.
-
-star	star_id	galaxy_id	Maps stars to their respective galaxies.
-
-planet	planet_id	star_id, planet_type_id	Details on orbital periods and life-habitability.
-
-moon	moon_id	planet_id	Information on lunar radii and orbital cycles.
-
-planet_type	planet_type_id	None	A lookup table for planetary classifications.
-
-**Sample Query**
+### **Sample Query**
 
 To find all planets that are considered "Terrestrial":
 
-**SQL**
-SELECT p.name, t.description 
-FROM planet p 
-JOIN planet_type t ON p.planet_type_id = t.planet_type_id 
-WHERE t.name = 'Terrestrial';
-Developed by: shreyanshgautam3
+### **SQL**
 
-Certification: freeCodeCamp Relational Database Course
+SELECT p.name, t.description 
+
+FROM planet p 
+
+JOIN planet_type t ON p.planet_type_id = t.planet_type_id 
+
+WHERE t.name = 'Terrestrial';
+
+
+Developed by: shreyanshgautam3
